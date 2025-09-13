@@ -16,3 +16,7 @@ python-multipart==0.0.9  # for file uploads in FastAPI
 
 # Database
 SQLAlchemy==2.0.36
+
+# Gemini Integration
+python-dotenv
+google-generativeai

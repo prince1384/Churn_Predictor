@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ChurnMetrics from './ChurnMetrics';
 import ChurnChart from './charts/ChurnChart';
 import ThreeDMetric from './3D/ThreeDMetric';
 import CustomerTable from './CustomerTable';
 import { motion } from 'framer-motion';
-import { ArrowUpIcon, ArrowDownIcon, BarChart3Icon, PieChartIcon, LineChartIcon, UserIcon, AlertTriangleIcon, ShieldIcon, UsersIcon } from 'lucide-react';
+import { ArrowUpIcon, ArrowDownIcon, BarChart3Icon, PieChartIcon, LineChartIcon, UserIcon, AlertTriangleIcon, ShieldIcon, UsersIcon, MessageSquare, X } from 'lucide-react';
+import Chatbot from './Chatbot';
 const Dashboard = ({
   data,
   isLoading,
   predictionColumn,
   classDistribution
 }) => {
+  const [showChatbot, setShowChatbot] = useState(false);
   const [metrics, setMetrics] = useState({
     churnRate: 0 as number,
     atRiskCount: 0 as number,
@@ -97,7 +99,27 @@ const Dashboard = ({
     gradient: 'from-blue-500/20 to-indigo-500/20',
     iconBg: 'from-blue-500/30 to-indigo-500/30'
   }];
-  return <div className="space-y-8">
+  return <div className="relative space-y-8">
+      <button onClick={() => setShowChatbot(!showChatbot)} className="absolute bottom-16 right-4 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 z-50">
+        <MessageSquare size={24} />
+      </button>
+
+      {showChatbot && (
+        <div className="fixed bottom-16 right-4 w-80 h-96 bg-gray-800 rounded-lg shadow-lg z-50 flex flex-col">
+          <div className="flex justify-between items-center p-4 border-b border-gray-700">
+            <h2 className="text-lg font-semibold text-white">Churn Chatbot</h2>
+            <button onClick={() => setShowChatbot(false)} className="text-gray-400 hover:text-white focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div className="flex-grow p-4 overflow-y-auto">
+            <Chatbot />
+          </div>
+        </div>
+      )}
+
       {/* Metrics Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metricCards.map((card, index) => <motion.div key={index} className={`bg-gradient-to-br ${card.gradient} backdrop-blur-sm border border-white/10 p-6 rounded-xl shadow-lg relative overflow-hidden`} whileHover={{

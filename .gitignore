@@ -1,2 +1,39 @@
+# Python
+venv/
 .venv/
-backenv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+
+# Uploads and outputs
+/backend/uploads/
+/backend/outputs/
+
+# Models
+/backend/models/catboost_model.cbm
+
+# Frontend
+/Frontend/Dashboard/node_modules/
+/Frontend/HomePage/node_modules/
+/Frontend/LoginPage/node_modules/
+/Frontend/Dashboard/dist/
+/Frontend/HomePage/dist/
+/Frontend/LoginPage/dist/
+
+# IDE and OS specific
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
