@@ -13,20 +13,21 @@ __pycache__/
 # Environment variables
 .env
 
-# Uploads and outputs
-/backend/uploads/
-/backend/outputs/
 
-# Models
-/backend/models/catboost_model.cbm
+# Uploads and outputs
+backend/uploads/
+backend/outputs/
+
+# Models (ignore all model files)
+backend/models/*
+
+
 
 # Frontend
-/Frontend/Dashboard/node_modules/
-/Frontend/HomePage/node_modules/
-/Frontend/LoginPage/node_modules/
-/Frontend/Dashboard/dist/
-/Frontend/HomePage/dist/
-/Frontend/LoginPage/dist/
+Frontend/*/node_modules/
+Frontend/*/dist/
+Frontend/report-dashboard/node_modules/
+Frontend/report-dashboard/dist/
 
 # IDE and OS specific
 .idea/
@@ -37,3 +38,5 @@ __pycache__/
 *.sln
 *.sw?
 .DS_Store
+backend/models/automobile_insurance.joblib
+backend/models/automobile_insurance.joblib

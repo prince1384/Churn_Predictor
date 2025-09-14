@@ -1,10 +1,15 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { App } from "./App";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { App } from './App';
+import { ReportPage } from './ReportPage';
+
 export function AppRouter() {
-  return <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />} />
-          </Routes>
-      </BrowserRouter>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/dashboard" element={<App />} />
+        <Route path="/report" element={<ReportPage />} />
+      </Routes>
+    </Router>
+  );
 }
